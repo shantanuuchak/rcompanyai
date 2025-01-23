@@ -1,0 +1,17 @@
+{
+  "name": "rcompanyai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node main.js --input=companies.txt --output=output.csv"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-stringify": "^6.5.2",
+    "playwright": "^1.49.1",
+    "yargs": "^17.7.2"
+  }
+}
