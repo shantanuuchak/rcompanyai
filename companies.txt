@@ -3,31 +3,3 @@ Rockwell automation
 Drax Group
 British Gas
 Bristol Energy
-Beam Energy
-Anglian Water
-Yorkshire Water
-Veolia
-OVO Energy
-Npower Business Solutions
-SSE
-Octopus Energy
-AIS Utilities
-Scottish Power
-National Grid
-E.ON
-BP
-Centrica
-EDF Energy
-Northeast Utilities
-Acorn Peach Energy Limited
-Vasakronan
-Thomas & Hutton
-CAP INGELEC
-Casavo
-Dickson Realty
-LONG Building Technologies
-SRF Consulting Group
-The Instant Group
-HomeSmart Realty Group
-Affect Energy Limited
-AIK Energy Austria GmbH

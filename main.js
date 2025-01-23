@@ -78,17 +78,11 @@ async function performSearch(page, query) {
 }
 
 (async () => {
-  // Step 1: Set the path to Brave and the user data directory
-  const bravePath =
-    "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"; // Path to Brave on Windows
-  const userDataDir =
-    "C:\\Users\\Chak\\AppData\\Local\\BraveSoftware\\Brave-Browser\\User Data\\Default"; // Path to Brave's user data directory
-
-  // Step 2: Launch Brave with the user data directory
-  const context = await chromium.launchPersistentContext(userDataDir, {
-    headless: true, // Run in non-headless mode
-    executablePath: bravePath, // Path to Brave browser
+  // Step 1: Launch a new browser instance (without persistent context)
+  const browser = await chromium.launch({
+    headless: true, // Run in headless mode (set to false for debugging)
   });
+  const context = await browser.newContext();
   const page = await context.newPage();
 
   // Loop through each company name
@@ -152,7 +146,7 @@ async function performSearch(page, query) {
     }
   }
 
-  // Step 3: Convert results to CSV format
+  // Step 2: Convert results to CSV format
   const csvData = results.map((result, index) => ({
     "S Number": index + 1, // Add S Number starting from 1
     Name: result.name,
@@ -163,7 +157,7 @@ async function performSearch(page, query) {
 
   const csvString = stringify(csvData, { header: true }); // Convert to CSV string
 
-  // Step 4: Save the results to a CSV file
+  // Step 3: Save the results to a CSV file
   try {
     fs.writeFileSync(outputFile, csvString);
     console.log(`Results saved to ${outputFile}`);
@@ -171,6 +165,7 @@ async function performSearch(page, query) {
     console.error(`Error writing to output file: ${error.message}`);
   }
 
-  // Step 5: Close the browser
+  // Step 4: Close the browser
   await context.close();
+  await browser.close();
 })();
